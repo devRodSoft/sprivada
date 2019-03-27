@@ -11,9 +11,10 @@
 }
 
 body#back{
-    background-image: url("../assets/img/menu/fondo.jpg");
+    /*background-image: url("../assets/img/menu/fondo.jpg");
     /*opacity: .8;
     filter: alpha(opacity=80);*/
+    background-color: #ccc;
 	color:#333;
 }
 button {
@@ -271,10 +272,4 @@ a span.glyphicon {
     float: left;
 }
 
-.imglogo {
-    background: url("http://www.terrazalafresneda.com.mx/erp/assets/img/menu/logocot.png");
-    background-size: 173px 100px;
-    background-repeat: no-repeat;
-    width: 173px;
-    height: 100px;
-}
+

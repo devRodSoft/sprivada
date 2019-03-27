@@ -52,26 +52,26 @@ class DashController extends Controller
         $this->layout = "erpl";
 
         $links =  [];
-        if(Yii::$app->user->can('catalogo'))
+        // if(Yii::$app->user->can('catalogo'))
             array_push($links,["nombre" => "CATALOGOS" , "link"=>"dash/catalogos" , "img" => "@web/assets/img/menu/folder.png"]);
-        if(Yii::$app->user->can('cliente'))
-            array_push($links,["nombre" => "CLIENTES" , "link"=>"cliente" , "img" => "@web/assets/img/menu/team.png"]);
-        if(Yii::$app->user->can('cotizacion'))
-            array_push($links,["nombre" => "LLAMADAS Y COTIZACIONES" , "link"=>"llamada" , "img" => "@web/assets/img/menu/phone.png"]);
-        if(Yii::$app->user->can('vproyecto'))
-            array_push($links,["nombre" => "PROYECTOS" , "link"=>"proyecto" , "img" => "@web/assets/img/menu/bank.png"]);
-        if(Yii::$app->user->can('egreso'))
-            array_push($links,["nombre" => "EGRESOS" , "link"=>"dash/egresos" , "img" => "@web/assets/img/menu/money.png"]);
-        if(Yii::$app->user->can('valmacen')||Yii::$app->user->can('calmacen'))
-            array_push($links,["nombre" => "ALMACEN" , "link"=>"dash/almacen" , "img" => "@web/assets/img/menu/box.png"]);
-        if(Yii::$app->user->can('cuenta'))
-            array_push($links,["nombre" => "CUENTAS POR PAGAR" , "link"=>"cuenta" , "img" => "@web/assets/img/menu/account.png"]);
-        if(Yii::$app->user->can('produccion'))
-            array_push($links,["nombre" => "PRODUCCION" , "link"=>"produccion" , "img" => "@web/assets/img/menu/settings.png"]);
-        if(Yii::$app->user->can('vnomina'))
-            array_push($links,["nombre" => "NOMINA" , "link"=>"nomina" , "img" => "@web/assets/img/menu/check.png"]);
-        if(Yii::$app->user->can('user'))
-            array_push($links,["nombre" => "USUARIO" , "link"=>"user/admin" , "img" => "@web/assets/img/menu/root.png"]);
+        // if(Yii::$app->user->can('cliente'))
+        //     array_push($links,["nombre" => "CLIENTES" , "link"=>"cliente" , "img" => "@web/assets/img/menu/team.png"]);
+        // if(Yii::$app->user->can('cotizacion'))
+        //     array_push($links,["nombre" => "LLAMADAS Y COTIZACIONES" , "link"=>"llamada" , "img" => "@web/assets/img/menu/phone.png"]);
+        // if(Yii::$app->user->can('vproyecto'))
+        //     array_push($links,["nombre" => "PROYECTOS" , "link"=>"proyecto" , "img" => "@web/assets/img/menu/bank.png"]);
+        // if(Yii::$app->user->can('egreso'))
+        //     array_push($links,["nombre" => "EGRESOS" , "link"=>"dash/egresos" , "img" => "@web/assets/img/menu/money.png"]);
+        // if(Yii::$app->user->can('valmacen')||Yii::$app->user->can('calmacen'))
+        //     array_push($links,["nombre" => "ALMACEN" , "link"=>"dash/almacen" , "img" => "@web/assets/img/menu/box.png"]);
+        // if(Yii::$app->user->can('cuenta'))
+        //     array_push($links,["nombre" => "CUENTAS POR PAGAR" , "link"=>"cuenta" , "img" => "@web/assets/img/menu/account.png"]);
+        // if(Yii::$app->user->can('produccion'))
+        //     array_push($links,["nombre" => "PRODUCCION" , "link"=>"produccion" , "img" => "@web/assets/img/menu/settings.png"]);
+        // if(Yii::$app->user->can('vnomina'))
+        //     array_push($links,["nombre" => "NOMINA" , "link"=>"nomina" , "img" => "@web/assets/img/menu/check.png"]);
+        // if(Yii::$app->user->can('user'))
+        //     array_push($links,["nombre" => "USUARIO" , "link"=>"user/admin" , "img" => "@web/assets/img/menu/root.png"]);
             
         return $this->render('catalogos' ,[ "links"=>$links]);
     }
@@ -149,12 +149,12 @@ class DashController extends Controller
            $this->layout = "erpl";
              $links =  [
 
-            ["nombre" => "PROYECTO" , "link"=>"dash/catproyecto" , "img" => "@web/assets/img/menu/bank.png"],
-            ["nombre" => "CLIENTES" , "link"=>"dash/catcliente" , "img" => "@web/assets/img/menu/team.png"],
-            ["nombre" => "COMPRAS INDIRECTAS" , "link"=>"dash/catindirecta" , "img" => "@web/assets/img/menu/money.png"],
-            ["nombre" => "PROVEEDORES" , "link"=>"proveedor" , "img" => "@web/assets/img/menu/proveedor.png"],
-            ["nombre" => "UM" , "link"=>"um" , "img" => "@web/assets/img/menu/measure.png"],
-            ["nombre" => "EMPLEADOS" , "link"=>"dash/catempleado" , "img" => "@web/assets/img/menu/empleado.png"],
+            ["nombre" => "empresa" , "link"=>"empresa" , "img" => "@web/assets/img/menu/bank.png"],
+            // ["nombre" => "CLIENTES" , "link"=>"dash/catcliente" , "img" => "@web/assets/img/menu/team.png"],
+            // ["nombre" => "COMPRAS INDIRECTAS" , "link"=>"dash/catindirecta" , "img" => "@web/assets/img/menu/money.png"],
+            // ["nombre" => "PROVEEDORES" , "link"=>"proveedor" , "img" => "@web/assets/img/menu/proveedor.png"],
+            // ["nombre" => "UM" , "link"=>"um" , "img" => "@web/assets/img/menu/measure.png"],
+            // ["nombre" => "EMPLEADOS" , "link"=>"dash/catempleado" , "img" => "@web/assets/img/menu/empleado.png"],
 
             ];
             return $this->render('catalogos',[ "links"=>$links] );
@@ -177,17 +177,17 @@ class DashController extends Controller
         }
     }
     
-    public function  actionCatproyecto(){
+    public function  actionCatempresa(){
         if(Yii::$app->user->can('catalogo')){
             $this->layout = "erpl";
             $links =  [
-            ["nombre" => "ILUMINACION" , "link"=>"cat/iluminacion" , "img" => "@web/assets/img/menu/light.png"],
-            ["nombre" => "COLOR" , "link"=>"cat/color" , "img" => "@web/assets/img/menu/colorwheel.png"],
-            ["nombre" => "ACRILICO" , "link"=>"cat/acrilico" , "img" => "@web/assets/img/menu/acrilic.png"],
-            ["nombre" => "TIPO MATERIAL" , "link"=>"cat/tmaterial" , "img" => "@web/assets/img/menu/crate.png"],
-            ["nombre" => "ESTATUS" , "link"=>"cestatus" , "img" => "@web/assets/img/menu/list.png"],
-            ["nombre" => "COMPLEJIDAD" , "link"=>"complejidad" , "img" => "@web/assets/img/menu/glove.png"],
-            ["nombre" => "PIE DE PAGINA" , "link"=>"cotconfig" , "img" => "@web/assets/img/menu/bank.png"]
+            // ["nombre" => "ILUMINACION" , "link"=>"cat/iluminacion" , "img" => "@web/assets/img/menu/light.png"],
+            // ["nombre" => "COLOR" , "link"=>"cat/color" , "img" => "@web/assets/img/menu/colorwheel.png"],
+            // ["nombre" => "ACRILICO" , "link"=>"cat/acrilico" , "img" => "@web/assets/img/menu/acrilic.png"],
+            // ["nombre" => "TIPO MATERIAL" , "link"=>"cat/tmaterial" , "img" => "@web/assets/img/menu/crate.png"],
+            // ["nombre" => "ESTATUS" , "link"=>"cestatus" , "img" => "@web/assets/img/menu/list.png"],
+            // ["nombre" => "COMPLEJIDAD" , "link"=>"complejidad" , "img" => "@web/assets/img/menu/glove.png"],
+            // ["nombre" => "PIE DE PAGINA" , "link"=>"cotconfig" , "img" => "@web/assets/img/menu/bank.png"]
             ];
             return $this->render('catalogos',[ "links"=>$links] );
         } else{

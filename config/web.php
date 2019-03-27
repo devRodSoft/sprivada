@@ -14,7 +14,7 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => '4I3DP78t0k_x-SiXfV0TwTFnyXmRa0lh',
-               'baseUrl' => "/erp",
+               'baseUrl' => "/segerp",
 		],
         'cache' => [
             'class' => 'yii\caching\FileCache',

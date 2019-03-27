@@ -28,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'MYP ERP',
+        'brandLabel' => 'SEPRAR',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,10 +37,10 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/index']],
-            ['label' => 'About', 'url' => ['/about']],
-            ['label' => 'Contact', 'url' => ['/contact']],
-            ['label' => 'CPANEL', 'url' => ['/index']],
+            // ['label' => 'Home', 'url' => ['/index']],
+            // ['label' => 'About', 'url' => ['/about']],
+            // ['label' => 'Contact', 'url' => ['/contact']],
+            // ['label' => 'CPANEL', 'url' => ['/']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/user/login']]
             ) : (
@@ -68,7 +68,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; MYP <?= date('Y') ?></p>
+        <p class="pull-left">&copy; SEPRAR <?= date('Y') ?></p>
 
 <!--        <p class="pull-right">--><?//= Yii::powered() ?><!--</p>-->
     </div>
