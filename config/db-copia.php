@@ -4,7 +4,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=erpmyp',
+    'dsn' => 'mysql:host=localhost;dbname=seguridad',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

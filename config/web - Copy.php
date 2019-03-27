@@ -11,7 +11,7 @@ $config = [
 	'defaultRoute' => 'dash',
     'components' => [
         'request' => [
-            'cookieValidationKey' => '4I3DP78t0k_x-SiXfV0TwTFnyXmRa0lh',
+            'cookieValidationKey' => '4I3DP78t0k_x-SiXfV0TwTFAx0mRa0lh',
                'baseUrl' => "/erp",
 		],
         'cache' => [
