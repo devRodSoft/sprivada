@@ -1,0 +1,196 @@
+ACUTALIZACION
+-----------------------
+COTIZACION - > OBSERVACION  VARCHAR(300)
+
+
+
+        public rptAcumCliente()
+        {
+            
+            InitializeComponent();
+            rsdict = App.Current.Resources;
+            BeforePrint += rptAcumCliente_BeforePrint;
+        }
+
+
+        private void rptAcumCliente_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e){
+            DateTime fini , ffin ;
+            fini = Convert.ToDateTime(this.Parameters["fechaini"].Value.ToString()); 
+            ffin = Convert.ToDateTime(this.Parameters["fechafin"].Value.ToString());
+
+
+            lblTitulo.Text = rsdict["SumClientReportTitle"].ToString();
+            lblSubtitulo.Text = string.Format("{0} {1:dd/MM/yyy}  {2} {3:dd/MM/yyy}", 
+                rsdict["ReportHeaderSince"] , fini, rsdict["ReportHeaderUntil"] , ffin);
+            lblCodigo.Text = rsdict["WordCode"].ToString();
+            lblCliente.Text = rsdict["WordClientd"].ToString();
+            lblNombre.Text = rsdict["WordName"].ToString();
+            lblOp.Text = rsdict["WordNoOP"].ToString();
+            lblVersion.Text = rsdict["WordVersion"].ToString();
+            lblDosificado.Text = rsdict["WordQtyReal"].ToString();
+
+
+        }
+
+
+
+    }
+
+ private void btnAcept_Click(object sender, RoutedEventArgs e){
+            String fecini = "", fEcfin ="" , horini="", horfin = "";
+            try
+            {
+                
+                rptAcumCliente rpt = new rptAcumCliente();
+                
+                rpt.Parameters["fechaini"].Value = "2016-06-20 00:00:00";
+                rpt.Parameters["fechafin"].Value = "2016-06-29 23:59:59";
+                rpt.Parameters["cliente"].Value = "";
+                rpt.Parameters["cliente"].Visible = false;
+                rpt.Parameters["fechafin"].Visible = false;
+                rpt.Parameters["fechaini"].Visible = false;
+                rpt.RequestParameters = false;
+                rpt.ShowPreviewDialog();
+
+
+               -- ALMACEN
+
+--ENTRADAS
+--AJUSTE
+--SALIDAS
+--INVENTARIO
+
+--LISTA DE MATERIALES CAMBIAR POR INVENTARIO
+
+
+--CAMBIAR CUENTAS PENDIENTES A CUENTAS POR PAGAR
+
+--PROYECTO
+--DESGLOSE DE COSTO
+--EMPLEADOS ASIGNADOS
+
+
+--AGREGAR INCENTIVO
+
+
+--FORMATO MONEDA
+--QUIEN LO AGREGO Y QUIEN LO MODIFICO
+
+
+FALTANTE
+SALIDAS POR PROYECTO
+--AJUSTE POR PROYECTO
+EMPLEADO AL 100 POR CIENTO
+PRODUCCION
+
+
+
+// 30-08-2016
+
+1.-ojito inventarios  -- 2 DIA  XX - YY
+2.-entradas quitar orden de compra XX - YY
+3.-codigo entradas alfanumerico  XX - YY
+4.-codigo no trae la descripcion del producto XX -YY
+5.-cuenta por pagar en base a fecha vencimiento XX - YY
+6.-dias de credito XX -YY
+7.-eliminar una orden de compra da error XX - YY
+
+1 DIA
+observacion XX -YY
+agregado parcial XX -YY
+
+BD
+proveedor => agregar campo dias de credito XX- YY
+OC => agregar pago parcial , aclaracion observaci XX -YY
+
+
+DIA 14 SEPTIEMBRE 2016
+COMPRAS INDIRECTAS PONER CENTAVOS
+IMPORTE CON DECIMALES 2
+PRODUCCION FILTRO NIVEL 2 DEPENDIENTE DEL 1
+NIVEL 3 
+
+
+DIA 27 SEPTIEMBRE 2016 HISTORIAL DE PAGOS
+CREATE TABLE IF NOT EXISTS `erpmyp`.`nomina` (
+  `idpagos` INT(11) NOT NULL AUTO_INCREMENT,
+  `fk_empleado` INT(11) NULL DEFAULT NULL,
+  `alias` VARCHAR(45) NULL DEFAULT NULL,
+  `nombre` VARCHAR(100) NULL DEFAULT NULL,
+  `empleado_total` DECIMAL(10,2) NULL DEFAULT NULL,
+  `porcentaje_total` DECIMAL(10,2) NULL DEFAULT NULL,
+  `folio` INT(11) NULL DEFAULT NULL,
+  `created_at` DATETIME NULL DEFAULT NULL,
+  `updated_at` DATETIME NULL DEFAULT NULL,
+  `created_by` VARCHAR(30) NULL DEFAULT NULL,
+  `updated_by` VARCHAR(30) NULL DEFAULT NULL,
+  PRIMARY KEY (`idpagos`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+ALTER TABLE `erpmyp`.`pagos` 
+DROP COLUMN `porcentaje_total`,
+DROP COLUMN `empleado_total`,
+ADD COLUMN `empleado_total` DECIMAL(10,2) NULL DEFAULT NULL AFTER `nombre`,
+ADD COLUMN `porcentaje_total` DECIMAL(10,2) NULL DEFAULT NULL AFTER `empleado_total`;
+
+CREATE TABLE IF NOT EXISTS `erpmyp`.`nomina_detalle` (
+  `idpagos_detalle` INT(11) NOT NULL AUTO_INCREMENT,
+  `fk_pagos` INT(11) NOT NULL,
+  `fk_proyecto` VARCHAR(45) NULL DEFAULT NULL,
+  `proyecto` VARCHAR(100) NULL DEFAULT NULL,
+  `monto` DECIMAL(10,2) NULL DEFAULT NULL,
+  `avance` DECIMAL(10,2) NULL DEFAULT NULL,
+  `porcentaje_pago` INT(11) NULL DEFAULT NULL,
+  `monto_total` DECIMAL(10,2) NULL DEFAULT NULL,
+  PRIMARY KEY (`idpagos_detalle`, `fk_pagos`),
+  INDEX `fk_pagos_detalle_pagos1_idx` (`fk_pagos` ASC),
+  CONSTRAINT `fk_pagos_detalle_pagos1`
+    FOREIGN KEY (`fk_pagos`)
+    REFERENCES `erpmyp`.`pagos` (`idpagos`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+ALTER TABLE `proyecto` 
+ADD COLUMN `st_terminado` INT(11) NULL DEFAULT NULL AFTER `updated_by`;
+
+cambiar folio a 15 chars
+
+JUNTA 05/10/2016
+AGREGAR FILTRAR EN PROYECTO**
+AGREGAR GRAFICA EN PROYECTO OJITO**
+ORDENAR DE ATRAS PARA ADELANTE
+CAMBIAR ICONOS DE PRODUCCION Y NOMINA**
+
+
+
+LLAMADA
+lammada print
+
+CAMBIAR A especificaciones de la maqueta **
+
+agrgar campo para modificar CONSIDERAMOS LA ELABORACION DE UN EDIFICIO
+
+iluminacion de la maqueta se puede o no poner al gusto**
+
+SITIO STATICO
+SITIO
+SI Y NO
+8 PROPUESTAS**
+
+ILUMINACION**
+PROYECTOS**
+
+
+NUEVO 
+DESARROLLO
+TERMINADO
+
+PROYECTO 
+
+
+AGREGAR COLUMNA AL PROYECTO //04012017
+ALTER TABLE `test`.`proyecto` 
+ADD COLUMN `fase` INT(11) NOT NULL DEFAULT 0 AFTER `st_terminado`;

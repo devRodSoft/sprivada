@@ -1,0 +1,280 @@
+
+.menu{
+	text-align: center;
+	font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+}
+
+body#back{
+    background-image: url("../assets/img/menu/fondo.jpg");
+    /*opacity: .8;
+    filter: alpha(opacity=80);*/
+	color:#333;
+}
+button {
+    outline: none;
+}
+
+.menu div {
+    height: 65px;
+    line-height: 65px;
+}
+
+.menu div p
+{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 20px; 
+  margin: 0;
+}
+
+a,a:active,a:hover{
+	/*color: #333;*/
+	text-decoration: none;	
+}
+
+.espaciado {
+    margin-left: 20px;
+	margin-right: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 20px #444;;
+    margin-bottom: 20px;
+   /*   opacity: .8;
+    filter: alpha(opacity=80);*/
+	
+}
+
+.bf{
+    font-size: 18px;
+}
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover , #custom-search-input button:focus {
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+       outline: none;
+}
+
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+.linkear {
+    color:#337ab7;
+}
+#compactar tr td p {
+    margin: 0;
+}
+
+a span.glyphicon {
+    margin-left: 5px;
+}
+/*.field-search {
+    margin-top: -9px;
+}*/
+
+/*COTIZACIONES **/
+#print {
+      size: 21cm 29.7cm;
+    margin: 30mm 45mm 30mm 45mm;
+}
+.boldie {
+    font-weight: bold;
+}
+
+.capitals{
+    text-transform: capitalize;
+}
+
+.tmain {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tsec {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.leftie{
+    text-align: left;
+}
+.rightie{
+    text-align: right;
+}
+.centerle{
+    text-align: center;
+}
+
+
+#tablita tr td {
+    text-align: center;
+}
+.preformated{
+    white-space: pre;
+}
+.frigthie{
+    float:  right;  
+}
+.tb p {
+    margin: 0;
+}
+.tb {
+    margin-bottom: 30px;
+}
+
+
+#elaboracion {
+    margin-left: 130px;
+
+}
+.grande {
+    font-size: 17px;
+}
+.mb50{
+    margin-bottom: 50px;
+}
+#firma1 , #firma2{
+    width: 280px;
+    float: left;
+    margin-left: 40px;
+    text-align: center;
+}
+#firma2 {
+     margin-left: 60px;
+}
+
+.subr {
+    border-top:  1px solid #000;
+}
+#firmas {
+    margin-top: 90px;
+}
+.progress-bar.animate {
+   width: 100%;
+}
+.hided{
+    display: none;
+}
+.showed{
+    display: none;
+}
+
+
+.calib {
+     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+#rechazada , #vencida {
+    display: none;
+}
+
+.seccion {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/*PROGRESS */
+.progress1 {
+    height: 30px;
+    margin-bottom: 0px; 
+
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    width: 65%;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.protitle{
+    width: 35%;
+   float:left;
+   /*margin-right:40px;*/
+   line-height:30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.acenter {
+    text-align: center;
+    justify-content: center;
+}
+.aleft {
+    text-align: left;
+}
+.aright {
+    text-align: right;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.romper{
+    clear: both;
+}
+
+.espnomina{
+    margin-right: 20px;
+}
+
+#nomina_form {
+    visibility: hidden;
+}
+
+#main-index{
+    width:1200px;
+}
+
+.menu-item {
+    width: 200px;
+    height: 250px;
+    float: left;
+}
+
+.imglogo {
+    background: url("http://www.terrazalafresneda.com.mx/erp/assets/img/menu/logocot.png");
+    background-size: 173px 100px;
+    background-repeat: no-repeat;
+    width: 173px;
+    height: 100px;
+}

@@ -1,0 +1,19 @@
+@import 'bootstrap.css';
+
+.acenter {
+    text-align: center;
+}
+.aleft {
+    text-align: left;
+}
+.aright {
+    text-align: right;
+}
+
+.negrita td {
+	font-weight: bold;
+}
+
+tr.odd td {
+	background-color: #d4d4d4;
+}
