@@ -35,7 +35,9 @@
         "kartik-v/yii2-widget-switchinput": "*",
         "maksyutin/yii2-dual-list-box": "dev-master",
         "kartik-v/yii2-detail-view": "*",
-        "kartik-v/yii2-export": "*"
+        "kartik-v/yii2-export": "*",
+        "kartik-v/dependent-dropdown": "dev-master",
+        "kartik-v/yii2-widget-depdrop": "1.0.4"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

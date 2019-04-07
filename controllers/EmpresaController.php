@@ -3,53 +3,52 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Empresa;
+use app\search\EmpresaSearch;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
+/**
+ * EmpresaController implements the CRUD actions for Empresa model.
+ */
 class EmpresaController extends Controller
 {
-    
-
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-              
-                'rules' => [
-                    [
-                        'allow' => true,
-                         'roles' => ['@'],
-                    ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
             ],
-           
         ];
     }
 
     /**
-     * Lists all CtipoColorModel models.
+     * Lists all Empresa models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CtipoColorSearch();
+        $searchModel = new EmpresaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
-
-
     /**
-     * Displays a single CtipoColorModel model.
-     * @param integer $id
+     * Displays a single Empresa model.
+     * @param integer $idempresa
+     * @param integer $fkestado
+     * @param integer $fkmunicipio
      * @return mixed
      */
     public function actionView($id)
@@ -60,27 +59,32 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Creates a new CtipoColorModel model.
+     * Creates a new Empresa model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CtipoColor();
+        $model = new Empresa();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post()) ) {
+            
+            $model->Validate();
+            $model->save();
+		    return $this->redirect(['view', 'id' => $model->idempresa]);
         } else {
-            return $this->renderAjax('create', [
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
 
     /**
-     * Updates an existing CtipoColorModel model.
+     * Updates an existing Empresa model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param integer $idempresa
+     * @param integer $fkestado
+     * @param integer $fkmunicipio
      * @return mixed
      */
     public function actionUpdate($id)
@@ -88,18 +92,20 @@ class EmpresaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $this->redirect(['index']);
+            return $this->redirect(['view', 'idempresa' => $model->idempresa]);
         } else {
-            return $this->renderAjax('update', [
+            return $this->render('update', [
                 'model' => $model,
             ]);
         }
     }
 
     /**
-     * Deletes an existing CtipoColorModel model.
+     * Deletes an existing Empresa model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param integer $idempresa
+     * @param integer $fkestado
+     * @param integer $fkmunicipio
      * @return mixed
      */
     public function actionDelete($id)
@@ -110,15 +116,17 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Finds the CtipoColorModel model based on its primary key value.
+     * Finds the Empresa model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return CtipoColor the loaded model
+     * @param integer $idempresa
+     * @param integer $fkestado
+     * @param integer $fkmunicipio
+     * @return Empresa the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($idempresa)
     {
-        if (($model = CtipoColor::findOne($id)) !== null) {
+        if (($model = Empresa::findOne(['idempresa' => $idempresa])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
