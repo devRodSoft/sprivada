@@ -1,7 +1,7 @@
 <?php
 
 
- /*
+
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=sql190.main-hosting.eu;dbname=u783079992_seg',
@@ -9,7 +9,7 @@ return [
     'password' => 'Moskitoseg1.',
     'charset' => 'utf8',
 ];
-*/
+ /*
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=sql190.main-hosting.eu;dbname=u783079992_seger',
@@ -17,7 +17,7 @@ return [
     'password' => 'Moskitosegerp1.',
     'charset' => 'utf8',
 ];
-
+*/
 /*
 return [
     'class' => 'yii\db\Connection',
