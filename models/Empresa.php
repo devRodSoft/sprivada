@@ -52,6 +52,29 @@ class Empresa extends ActiveRecord
     {
         return 'empresa';
     }
+    
+    public function behaviors(){
+        return [
+            'blame' =>       [
+                'class' => CulpableBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_by','updated_by'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],
+
+                ],
+
+
+            ],
+            'timestamp' => [
+                'class' => TiempoBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                    //'value' => new Expression('date(\'Y-m-d H:i:s\');'),
+                ],
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc

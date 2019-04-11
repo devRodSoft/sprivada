@@ -19,7 +19,7 @@ use app\custom\GlypIcon;
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
 
 $this->title = "Mostrar : ".$model-><?= $generator->getNameAttribute() ?>;
-$this->params['breadcrumbs'][] = ['label' => 'Compras Indirectas', 'url' => ['/dash/cindirectas/']];
+$this->params['breadcrumbs'][] = ['label' => 'Cátalogos', 'url' => ['/dash/catalogos/']];
 $this->params['breadcrumbs'][] = <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>;
 
 $this->params['breadcrumbs'][] = "Mostrar : ".$model-><?= $generator->getNameAttribute() ?>;
