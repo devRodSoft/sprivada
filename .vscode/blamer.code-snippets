@@ -1,0 +1,62 @@
+{
+	// Place your segerp workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	 "USE BLAMER SNIPPET": {
+	 	"scope": "php,html",
+	 	"prefix": "blamer",
+	 	"body": [
+			"public function behaviors(){",
+			"\treturn [",
+					"\t\t'blame' =>       [",
+						"\t\t\t'class' => CulpableBehavior::className(),",
+						"\t\t\t'attributes' => [",
+							"\t\t\t\tActiveRecord::EVENT_BEFORE_INSERT => ['created_by','updated_by'],",
+							"\t\t\t\tActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],",
+		
+						"\t\t\t],",
+		
+		
+					"\t\t],",
+					"\t\t'timestamp' => [",
+						"\t\t\t'class' => TiempoBehavior::className(),",
+						"\t\t\t'attributes' => [",
+							"\t\t\t\tActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],",
+							"\t\t\t\tActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],",
+						"\t\t\t],",
+					"\t\t],",
+				"\t];",
+			"}",
+		],
+	 	"description": "LOG OUTPUT TO CONSOLE"
+	 },
+	 
+	 "DROP DOWN ARRAYLIST": {
+		"scope": "php,html",
+		"prefix": "droparray",
+		"body": [
+		   " <?= $$form->field($model, '$1')->dropDownList(ArrayHelper::map($2::find()->all(),'$3' , '${4:descripcion}') , ['prompt'=>'SELECCIONA $5']) ?>"
+		   
+	   ],
+		"description": "DROPDOWN WITH ARRAYLIST"
+	},
+	
+	"DEBUG VARIABLES": {
+		"scope": "php,html",
+		"prefix": "debugvar",
+		"body": [
+		   "\\$model->validate();",
+		   "d(\\$model->getErrors());",
+		   "die();$0"
+		   
+	   ],
+		"description": "DEBUGEAR VARIABLES EN YII"
+	},
+	 
+	
+
+}

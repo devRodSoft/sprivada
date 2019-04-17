@@ -9,11 +9,11 @@ use app\custom\GlypIcon;
 /* @var $searchModel app\search\EmpresaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = "Lista de Empresas";
+$this->title = "Lista de Clientes";
 $this->params['breadcrumbs'][] = ['label' => 'Cátalogos', 'url' => ['/dash/catalogos/']];
-$this->params['breadcrumbs'][] = 'Empresas';
+$this->params['breadcrumbs'][] = 'Clientes';
 ?>
-<div class="empresa-index">
+<div class="cliente-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = 'Empresas';
             ['class' => 'yii\grid\SerialColumn',
             'contentOptions' => ['width' => '50px;' ],],
 
-            'idempresa',
+            'idcliente',
             'razon',
             'nombre',
             'rfc',
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = 'Empresas';
             // 'ciudad',
             // 'municipio',
             // 'estado',
-            // 'tipo_empresa',
+            // 'tipo_cliente',
             // 'giro',
             // 'noempleados',
             // 'encargado_pago',
@@ -58,15 +58,15 @@ $this->params['breadcrumbs'][] = 'Empresas';
             'template' => '{view}{update}{delete}',
             'buttons' => [
                 'view' => function ($url, $model) {
-                    $url1 = Url::to(['view', 'id'=> $model->idempresa]);
+                    $url1 = Url::to(['view', 'id'=> $model->idcliente]);
                      return Html::a('<i class="glyphicon glyphicon-eye-open"></i>' ,$url1 ); 
                  },
                 'update' => function ($url, $model) {
-                   $url1 = Url::to(['update', 'id'=> $model->idempresa]);
+                   $url1 = Url::to(['update', 'id'=> $model->idcliente]);
                     return Html::a('<i class="glyphicon glyphicon-pencil"></i>' ,$url1 ); 
                 },
                 'delete' => function($url,$model){
-                   $url1 = 'delete?id='.$model->idempresa;
+                   $url1 = 'delete?id='.$model->idcliente;
                     return Html::a('<span class="glyphicon glyphicon-trash"></span>', [$url1] ,[ 'title'=>'Delete', 'aria-label'=>'Delete' ,'data-confirm'=>'Are you sure you want to delete this item?', 'data-method'=>'post' ,'data-pjax'=>'0' ]);
                 }
               ],

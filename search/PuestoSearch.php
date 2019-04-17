@@ -5,12 +5,12 @@ namespace app\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Empresa;
+use app\models\Puesto;
 
 /**
- * EmpresaSearch represents the model behind the search form about `app\models\Empresa`.
+ * PuestoSearch represents the model behind the search form about `app\models\Puesto`.
  */
-class EmpresaSearch extends Empresa
+class PuestoSearch extends Puesto
 {
     public $globalSearch;
     /**
@@ -19,8 +19,8 @@ class EmpresaSearch extends Empresa
     public function rules()
     {
         return [
-            [['idempresa'], 'integer'],
-            [['razon', 'nombre', 'rfc', 'direccion', 'nointerior', 'colonia', 'noexterior', 'cp', 'calle', 'calle2', 'telefono', 'celular', 'ciudad', 'fkmunicipio', 'fkestado', 'tipo_empresa', 'giro', 'noempleados', 'encargado_pago', 'dias_pago', 'contrato', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
+            [['idpuesto', 'b_supervisor'], 'integer'],
+            [['descripcion', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [[ 'globalSearch'], 'safe'],
         ];
     }
@@ -43,7 +43,7 @@ class EmpresaSearch extends Empresa
      */
     public function search($params)
     {
-        $query = Empresa::find();
+        $query = Puesto::find();
 
         // add conditions that should always apply here
 
@@ -59,12 +59,9 @@ class EmpresaSearch extends Empresa
             return $dataProvider;
         }
 
-        
+        // grid filtering conditions
 
-        $query->andFilterWhere(['like', 'razon', $this->globalSearch])
-            ->orFilterWhere(['like', 'nombre', $this->globalSearch])
-            ->orFilterWhere(['like', 'rfc', $this->globalSearch])
-            ->orFilterWhere(['like', 'direccion', $this->globalSearch]);
+        $query->andFilterWhere(['like', 'descripcion', $this->globalSearch]);
 
         return $dataProvider;
     }

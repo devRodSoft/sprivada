@@ -43,14 +43,14 @@ use yii\db\ActiveRecord;
  * @property Flaboral[] $flaborals
  * @property Oficina[] $oficinas
  */
-class Empresa extends ActiveRecord
+class Cliente extends ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'empresa';
+        return 'cliente';
     }
     
     public function behaviors(){
@@ -85,7 +85,7 @@ class Empresa extends ActiveRecord
             [['razon', 'nombre', 'fkestado', 'fkmunicipio'], 'required'],
             [['fkestado', 'fkmunicipio'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['razon', 'nombre', 'direccion', 'colonia', 'calle', 'calle2', 'tipo_empresa'], 'string', 'max' => 100],
+            [['razon', 'nombre', 'direccion', 'colonia', 'calle', 'calle2', 'tipo_cliente'], 'string', 'max' => 100],
             [['rfc', 'nointerior', 'noexterior', 'cp', 'contrato'], 'string', 'max' => 15],
             [['telefono', 'celular', 'created_by', 'updated_by'], 'string', 'max' => 30],
             [['ciudad', 'giro', 'encargado_pago'], 'string', 'max' => 45],
@@ -101,7 +101,7 @@ class Empresa extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idempresa' => 'Id',
+            'idcliente' => 'Id',
             'razon' => 'Razon',
             'nombre' => 'Nombre',
             'rfc' => 'RFC',
@@ -117,7 +117,7 @@ class Empresa extends ActiveRecord
             'fkestado' => 'Estado',
             'fkmunicipio' => 'Municipio',
             'ciudad' => 'Ciudad',
-            'tipo_empresa' => 'Tipo Empresa',
+            'tipo_cliente' => 'Tipo Empresa',
             'giro' => 'Giro',
             'noempleados' => 'No. Empleados',
             'encargado_pago' => 'Encargado Pago',

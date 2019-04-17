@@ -11,11 +11,11 @@ $estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descr
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Empresa */
+/* @var $model app\models\Cliente */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="empresa-form">
+<div class="cliente-form">
     <div class="container">
         <?php $form = ActiveForm::begin(); ?>
         <div class="panel-group">
@@ -103,7 +103,7 @@ $estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descr
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <?= $form->field($model, 'tipo_empresa')->textInput(['maxlength' => true])  ?>
+                            <?= $form->field($model, 'tipo_cliente')->textInput(['maxlength' => true])  ?>
                         </div>
                         <div class="col-md-5">
                             <?= $form->field($model, 'giro')->textInput(['maxlength' => true]) ?>

@@ -3,16 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Empresa;
-use app\search\EmpresaSearch;
+use app\models\Tipo;
+use app\models\Grupo;
+use app\search\TipoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EmpresaController implements the CRUD actions for Empresa model.
+ * TipoController implements the CRUD actions for Tipo model.
  */
-class EmpresaController extends Controller
+class TipoController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Lists all Empresa models.
+     * Lists all Tipo models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EmpresaSearch();
+        $searchModel = new TipoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,33 +46,29 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Displays a single Empresa model.
-     * @param integer $idempresa
-     * @param integer $fkestado
-     * @param integer $fkmunicipio
+     * Displays a single Tipo model.
+     * @param integer $idtipo
+     * @param integer $fkgrupo
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($idtipo, $fkgrupo)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($idtipo, $fkgrupo),
         ]);
     }
 
     /**
-     * Creates a new Empresa model.
+     * Creates a new Tipo model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Empresa();
-
-        if ($model->load(Yii::$app->request->post()) ) {
+        $model = new Tipo();
             
-            $model->Validate();
-            $model->save();
-		    return $this->redirect(['view', 'id' => $model->idempresa]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -80,19 +77,18 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Updates an existing Empresa model.
+     * Updates an existing Tipo model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $idempresa
-     * @param integer $fkestado
-     * @param integer $fkmunicipio
+     * @param integer $idtipo
+     * @param integer $fkgrupo
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($idtipo, $fkgrupo)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($idtipo, $fkgrupo);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idempresa' => $model->idempresa]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,32 +97,30 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Deletes an existing Empresa model.
+     * Deletes an existing Tipo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $idempresa
-     * @param integer $fkestado
-     * @param integer $fkmunicipio
+     * @param integer $idtipo
+     * @param integer $fkgrupo
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($idtipo, $fkgrupo)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($idtipo, $fkgrupo)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Empresa model based on its primary key value.
+     * Finds the Tipo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $idempresa
-     * @param integer $fkestado
-     * @param integer $fkmunicipio
-     * @return Empresa the loaded model
+     * @param integer $idtipo
+     * @param integer $fkgrupo
+     * @return Tipo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idempresa)
+    protected function findModel($idtipo, $fkgrupo)
     {
-        if (($model = Empresa::findOne(['idempresa' => $idempresa])) !== null) {
+        if (($model = Tipo::findOne(['idtipo' => $idtipo, 'fkgrupo' => $fkgrupo])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
