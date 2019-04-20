@@ -5,11 +5,11 @@ use yii\widgets\DetailView;
 use app\custom\GlypIcon;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Empresa */
+/* @var $model app\models\Cliente */
 
 $this->title = "Mostrar : ".$model->idcliente;
 $this->params['breadcrumbs'][] = ['label' => 'Cátalogos', 'url' => ['/dash/catalogos/']];
-$this->params['breadcrumbs'][] = ['label' => 'Empresas', 'url' => ['/cliente/']];
+$this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
 
 $this->params['breadcrumbs'][] = "Mostrar : ".$model->idcliente;
 ?>
@@ -20,9 +20,9 @@ $this->params['breadcrumbs'][] = "Mostrar : ".$model->idcliente;
     <p>
         <?= GlypIcon::aglyp('Nuevo','glyphicon-plus', ['create'], ['class' => 'btn btn-success']) ?>
 
-        <?= GlypIcon::aglyp('Editar','glyphicon-pencil', ['update', 'id' => $model->idcliente], ['class' => 'btn btn-primary']) ?>
+        <?= GlypIcon::aglyp('Editar','glyphicon-pencil', ['update', 'idcliente' => $model->idcliente, 'fkestado' => $model->fkestado, 'fkmunicipio' => $model->fkmunicipio], ['class' => 'btn btn-primary']) ?>
 
-        <?= GlypIcon::aglyp('Eliminar','glyphicon-remove', ['delete', 'id' => $model->idcliente],[ 
+        <?= GlypIcon::aglyp('Eliminar','glyphicon-remove', ['delete', 'idcliente' => $model->idcliente, 'fkestado' => $model->fkestado, 'fkmunicipio' => $model->fkmunicipio],[ 
         'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Estas seguro de Eliminar?',
@@ -47,9 +47,11 @@ $this->params['breadcrumbs'][] = "Mostrar : ".$model->idcliente;
             'calle2',
             'telefono',
             'celular',
+            ['attribute'=>'fkestado',
+             'value'=>$model->fkestado0->descripcion,],
+            ['attribute' => 'fkmunicipio',
+             'value'=> $model->fkmunicipio0->descripcion,],
             'ciudad',
-            'fkmunicipio',
-            'fkestado',
             'tipo_cliente',
             'giro',
             'noempleados',

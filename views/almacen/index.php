@@ -6,14 +6,14 @@ use yii\grid\GridView;
 use app\custom\GlypIcon;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\search\ClienteSearch */
+/* @var $searchModel app\search\AlmacenSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = "Lista de Clientes";
+$this->title = "Lista de Almacenes";
 $this->params['breadcrumbs'][] = ['label' => 'Cátalogos', 'url' => ['/dash/catalogos/']];
-$this->params['breadcrumbs'][] = 'Clientes';
+$this->params['breadcrumbs'][] = 'Almacenes';
 ?>
-<div class="cliente-index">
+<div class="almacen-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -27,37 +27,18 @@ $this->params['breadcrumbs'][] = 'Clientes';
             ['class' => 'yii\grid\SerialColumn',
             'contentOptions' => ['width' => '50px;' ],],
 
-            'idcliente',
-            'nombre',
-            'rfc',
-            'direccion',
-            'noexterior',
-            'nointerior',
-            ['attribute'=>'fkmunicipio',
-             'value'=>'fkmunicipio0.descripcion'],
-             ['attribute'=>'fkestado',
-             'value'=>'fkestado0.descripcion'],
-            // 'colonia',
-            // 'cp',
-            // 'calle',
-            // 'calle2',
-            // 'telefono',
-            // 'celular',
-            // 'fkestado',
-            // 'ciudad',
-            // 'tipo_cliente',
-            // 'giro',
-            // 'noempleados',
-            // 'encargado_pago',
-            // 'dias_pago',
-            // 'contrato',
+            'idalmacen',
+            'descripcion',
+            ['attribute'=>'fkgrupo' , 'value'=>'fkgrupo0.descripcion'],
+            ['attribute'=>'fktipo' , 'value'=>'fktipo0.descripcion'],
+            ['attribute'=>'fkclase' , 'value'=>'fkclase0.descripcion'],
             // 'created_at',
             // 'updated_at',
             // 'created_by',
             // 'updated_by',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{view}{update}{delete}',
+            'template' => '{update}{delete}',
                 'header'=> Html::a('<i class="glyphicon glyphicon-plus"></i>&nbsp; Nuevo' , ['create']) ,
                 'contentOptions' => ['width' => '100px;' , 'align' => 'center'],
                 ],

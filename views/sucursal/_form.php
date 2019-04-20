@@ -11,7 +11,13 @@ use yii\helpers\Url;
 /* @var $model app\models\Sucursal */
 /* @var $form yii\widgets\ActiveForm */
 
-$estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descripcion')
+$estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descripcion');
+
+$estadosf[0] = "Seleccione un estado";
+foreach ($estados as $key => $value) {
+    $estadosf[$key] = $value;
+}
+
 ?>
 
 <div class="sucursal-form">
@@ -46,7 +52,7 @@ $estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descr
             <?=  Html::hiddenInput('selected_id', $model->isNewRecord ? '' : $model->fkmunicipio, ['id'=>'selected_id']); ?>
             <div class="row">
                 <div class="col-md-4">
-                    <?= $form->field($model, 'fkestado')->dropDownList($estados, ['id'=>'idestado']); ?>
+                    <?= $form->field($model, 'fkestado')->dropDownList($estadosf, ['id'=>'idestado']); ?>
                 </div>
                 <div class="col-md-4">
                     <?= $form->field($model, 'fkmunicipio')->widget(DepDrop::classname(), [

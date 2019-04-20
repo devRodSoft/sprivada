@@ -5,12 +5,12 @@ namespace app\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Cliente;
+use app\models\Almacen;
 
 /**
- * ClienteSearch represents the model behind the search form about `app\models\Cliente`.
+ * AlmacenSearch represents the model behind the search form about `app\models\Almacen`.
  */
-class ClienteSearch extends Cliente
+class AlmacenSearch extends Almacen
 {
     public $globalSearch;
     /**
@@ -19,8 +19,8 @@ class ClienteSearch extends Cliente
     public function rules()
     {
         return [
-            [['idcliente', 'fkestado', 'fkmunicipio'], 'integer'],
-            [['razon', 'nombre', 'rfc', 'direccion', 'nointerior', 'colonia', 'noexterior', 'cp', 'calle', 'calle2', 'telefono', 'celular', 'ciudad', 'tipo_cliente', 'giro', 'noempleados', 'encargado_pago', 'dias_pago', 'contrato', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
+            [['idalmacen', 'fkgrupo', 'fktipo', 'fkclase'], 'integer'],
+            [['descripcion', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
             [[ 'globalSearch'], 'safe'],
         ];
     }
@@ -43,7 +43,7 @@ class ClienteSearch extends Cliente
      */
     public function search($params)
     {
-        $query = Cliente::find();
+        $query = Almacen::find();
 
         // add conditions that should always apply here
 
@@ -59,15 +59,7 @@ class ClienteSearch extends Cliente
             return $dataProvider;
         }
 
-        $query->joinWith('fkestado0');
-        $query->joinWith('fkmunicipio0');
-
-        $query->andFilterWhere(['like', 'razon', $this->globalSearch])
-            ->orFilterWhere(['like', 'nombre', $this->globalSearch])
-            ->orFilterWhere(['like', 'rfc', $this->globalSearch])
-            ->orFilterWhere(['like', 'estado.descripcion', $this->globalSearch]) 
-            ->orFilterWhere(['like', 'municipio.descripcion', $this->globalSearch]) 
-            ->orFilterWhere(['like', 'direccion', $this->globalSearch]);
+        $query->andFilterWhere(['like', 'descripcion', $this->globalSearch]);
 
         return $dataProvider;
     }

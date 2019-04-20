@@ -8,9 +8,9 @@ use app\custom\TiempoBehavior;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "empresa".
+ * This is the model class for table "cliente".
  *
- * @property integer $idempresa
+ * @property integer $idcliente
  * @property string $razon
  * @property string $nombre
  * @property string $rfc
@@ -26,7 +26,7 @@ use yii\db\ActiveRecord;
  * @property integer $fkestado
  * @property integer $fkmunicipio
  * @property string $ciudad
- * @property string $tipo_empresa
+ * @property string $tipo_cliente
  * @property string $giro
  * @property string $noempleados
  * @property string $encargado_pago
@@ -39,9 +39,6 @@ use yii\db\ActiveRecord;
  *
  * @property Estado $fkestado0
  * @property Municipio $fkmunicipio0
- * @property Fgeneral[] $fgenerals
- * @property Flaboral[] $flaborals
- * @property Oficina[] $oficinas
  */
 class Cliente extends ActiveRecord
 {
@@ -52,7 +49,7 @@ class Cliente extends ActiveRecord
     {
         return 'cliente';
     }
-    
+
     public function behaviors(){
         return [
             'blame' =>       [
@@ -117,7 +114,7 @@ class Cliente extends ActiveRecord
             'fkestado' => 'Estado',
             'fkmunicipio' => 'Municipio',
             'ciudad' => 'Ciudad',
-            'tipo_cliente' => 'Tipo Empresa',
+            'tipo_cliente' => 'Tipo Cliente',
             'giro' => 'Giro',
             'noempleados' => 'No. Empleados',
             'encargado_pago' => 'Encargado Pago',
@@ -144,29 +141,5 @@ class Cliente extends ActiveRecord
     public function getFkmunicipio0()
     {
         return $this->hasOne(Municipio::className(), ['idmunicipio' => 'fkmunicipio']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFgenerals()
-    {
-        return $this->hasMany(Fgeneral::className(), ['fkempresa' => 'idempresa']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFlaborals()
-    {
-        return $this->hasMany(Flaboral::className(), ['fkempresa' => 'idempresa']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getOficinas()
-    {
-        return $this->hasMany(Oficina::className(), ['fkempresa' => 'idempresa']);
     }
 }

@@ -51,10 +51,10 @@ class ClienteController extends Controller
      * @param integer $fkmunicipio
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($idcliente, $fkestado, $fkmunicipio)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($idcliente, $fkestado, $fkmunicipio),
         ]);
     }
 
@@ -65,13 +65,10 @@ class ClienteController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Empresa();
+        $model = new Cliente();
 
-        if ($model->load(Yii::$app->request->post()) ) {
-            
-            $model->Validate();
-            $model->save();
-		    return $this->redirect(['view', 'id' => $model->idcliente]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'idcliente' => $model->idcliente, 'fkestado' => $model->fkestado, 'fkmunicipio' => $model->fkmunicipio]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -87,12 +84,12 @@ class ClienteController extends Controller
      * @param integer $fkmunicipio
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($idcliente, $fkestado, $fkmunicipio)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($idcliente, $fkestado, $fkmunicipio);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idcliente' => $model->idcliente]);
+            return $this->redirect(['view', 'idcliente' => $model->idcliente, 'fkestado' => $model->fkestado, 'fkmunicipio' => $model->fkmunicipio]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -108,25 +105,25 @@ class ClienteController extends Controller
      * @param integer $fkmunicipio
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($idcliente, $fkestado, $fkmunicipio)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($idcliente, $fkestado, $fkmunicipio)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Empresa model based on its primary key value.
+     * Finds the Cliente model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $idcliente
      * @param integer $fkestado
      * @param integer $fkmunicipio
-     * @return Empresa the loaded model
+     * @return Cliente the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idcliente)
+    protected function findModel($idcliente, $fkestado, $fkmunicipio)
     {
-        if (($model = Empresa::findOne(['idcliente' => $idcliente])) !== null) {
+        if (($model = Cliente::findOne(['idcliente' => $idcliente, 'fkestado' => $fkestado, 'fkmunicipio' => $fkmunicipio])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

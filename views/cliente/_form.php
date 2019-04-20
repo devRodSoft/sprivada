@@ -7,47 +7,51 @@ use app\models\Estado;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
-$estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descripcion')
+$estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descripcion');
 
 
+$estadosf[0] = "Seleccione un estado";
+foreach ($estados as $key => $value) {
+    $estadosf[$key] = $value;
+}
 /* @var $this yii\web\View */
 /* @var $model app\models\Cliente */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="cliente-form">
-    <div class="container">
-        <?php $form = ActiveForm::begin(); ?>
-        <div class="panel-group">
+
+    <?php $form = ActiveForm::begin(); ?>
+    <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-heading">Datos Generales</div>
                 <div class="panel-body">
-                    <?= $form->field($model, 'razon')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'razon')->textInput(['maxlength' => true]) ?>
 
-                    <div class="row">
+    <div class="row">
                         <div class="col-md-6">
                             <?= $form->field($model, 'rfc')->textInput(['maxlength' => true]) ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
-                        </div>
-                    </div>
+    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+</div>
+</div>
 
-                    <div class="row">
+    <div class="row">
                         <div class="col-md-8">
                             <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $form->field($model, 'nointerior')->textInput(['maxlength' => true])  ?>
+                            <?= $form->field($model, 'noexterior')->textInput(['maxlength' => true])  ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $form->field($model, 'noexterior')->textInput(['maxlength' => true])  ?>
+                            <?= $form->field($model, 'nointerior')->textInput(['maxlength' => true])  ?>
                         </div>
                     </div>
                     <?=  Html::hiddenInput('selected_id', $model->isNewRecord ? '' : $model->fkmunicipio, ['id'=>'selected_id']); ?>
                     <div class="row">
                         <div class="col-md-4">
-                            <?= $form->field($model, 'fkestado')->dropDownList($estados, ['id'=>'idestado']); ?>
+                            <?= $form->field($model, 'fkestado')->dropDownList($estadosf, ['id'=>'idestado']); ?>
                         </div>
                         <div class="col-md-4">
                             <?= $form->field($model, 'fkmunicipio')->widget(DepDrop::classname(), [
@@ -128,12 +132,11 @@ $estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descr
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? 'Nuevo' : 'Editar', ['class' =>
-    $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
-
-        <?php ActiveForm::end(); ?>
+    
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Nuevo' : 'Editar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+
+    <?php ActiveForm::end(); ?>
+
 </div>

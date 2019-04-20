@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Empresa */
+/* @var $model app\models\Cliente */
 
-$this->title = 'Editar Empresa: '.$model->idcliente;
+$this->title = 'Editar : '.$model->idcliente;
 
 $this->params['breadcrumbs'][] = ['label' => 'Cátalogos', 'url' => ['/dash/catalogos/']];
 $this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
