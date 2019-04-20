@@ -149,8 +149,8 @@ class DashController extends Controller
            $this->layout = "erpl";
              $links =  [
 
-            ["nombre" => "cliente" , "link"=>"cliente" , "img" => "@web/assets/img/menu/bank.png"],
-            // ["nombre" => "vehiculos" , "link"=>"vehiculo" , "img" => "@web/assets/img/menu/team.png"],
+            ["nombre" => "surcusal" , "link"=>"sucursal" , "img" => "@web/assets/img/menu/bank.png"],
+            ["nombre" => "empresa" , "link"=>"empresa" , "img" => "@web/assets/img/menu/team.png"],
             // ["nombre" => "servicio" , "link"=>"servicio" , "img" => "@web/assets/img/menu/money.png"],
             ["nombre" => "tipo" , "link"=>"tipo" , "img" => "@web/assets/img/menu/team.png"],
             ["nombre" => "clase" , "link"=>"clase" , "img" => "@web/assets/img/menu/money.png"],
