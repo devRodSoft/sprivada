@@ -10,10 +10,7 @@ use yii\helpers\Url;
 $estados = ArrayHelper::map(Estado::find()->asArray()->all(), 'idestado', 'descripcion');
 
 
-$estadosf[0] = "Seleccione un estado";
-foreach ($estados as $key => $value) {
-    $estadosf[$key] = $value;
-}
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Cliente */
 /* @var $form yii\widgets\ActiveForm */
