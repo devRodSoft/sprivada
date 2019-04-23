@@ -150,8 +150,8 @@ class DashController extends Controller
              $links =  [
 
             ["nombre" => "surcusal" , "link"=>"sucursal" , "img" => "@web/assets/img/menu/bank.png"],
-            ["nombre" => "empresa" , "link"=>"empresa" , "img" => "@web/assets/img/menu/team.png"],
-            ["nombre" => "cliente" , "link"=>"cliente" , "img" => "@web/assets/img/menu/money.png"],
+            // ["nombre" => "empresa" , "link"=>"empresa" , "img" => "@web/assets/img/menu/team.png"],
+            // ["nombre" => "cliente" , "link"=>"cliente" , "img" => "@web/assets/img/menu/money.png"],
             ["nombre" => "tipo" , "link"=>"tipo" , "img" => "@web/assets/img/menu/team.png"],
             ["nombre" => "clase" , "link"=>"clase" , "img" => "@web/assets/img/menu/money.png"],
             ["nombre" => "puesto" , "link"=>"puesto" , "img" => "@web/assets/img/menu/proveedor.png"],
